@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  /* Base colors - subtle and clean */
+  --background: 0 0% 100%;
+  --foreground: 199 34% 12%; /* #134455 - Darker blue */
+  
+  /* Card - very subtle blue tint */
+  --card: 0 0% 100%;
+  --card-foreground: 199 34% 12%;
+  
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 199 34% 12%;
+  
+  /* Primary - Your signature blue (Normal state from image) */
+  --primary: 195 100% 47%; /* #00b3f2 - Vibrant cyan-blue */
+  --primary-foreground: 0 0% 100%;
+  
+  /* Secondary - Lighter blue for subtle actions */
+  --secondary: 193 83% 88%; /* #c1e3f0 - Light blue */
+  --secondary-foreground: 195 46% 31%; /* #2b5cc2 */
+  
+  /* Muted - Very light blue-gray */
+  --muted: 210 40% 96%;
+  --muted-foreground: 195 18% 48%; /* Muted blue-gray */
+  
+  /* Accent - Slightly darker blue for highlights */
+  --accent: 193 100% 85%; /* Light active blue */
+  --accent-foreground: 195 65% 27%;
+  
+  /* Borders and inputs - subtle blue tint */
+  --border: 210 31% 91%;
+  --input: 210 31% 91%;
+  --ring: 195 100% 47%; /* Match primary */
+  
+  /* Success - Light green-blue */
+  --success: 180 70% 45%; /* #24b8a8 - Teal-blue */
+  --success-foreground: 0 0% 100%;
+  
+  /* Warning - Light amber-blue */
+  --warning: 45 95% 55%; /* #f5c542 - Warm yellow */
+  --warning-foreground: 199 34% 12%;
+  
+  /* Destructive - Light coral-blue */
+  --destructive: 10 80% 60%; /* #e66a5c - Soft red */
+  --destructive-foreground: 0 0% 100%;
+  
+  /* Border radius - slightly rounded */
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark mode - Deep blue tones */
+  --background: 199 47% 9%; /* #092b3a - Dark blue background */
+  --foreground: 195 83% 88%;
+  
+  --card: 199 43% 11%; /* #0e323f - Slightly lighter dark blue */
+  --card-foreground: 195 83% 88%;
+  
+  --popover: 199 43% 11%;
+  --popover-foreground: 195 83% 88%;
+  
+  /* Primary - Brighter blue for dark mode */
+  --primary: 195 100% 55%; /* #1ac5ff - Lighter cyan */
+  --primary-foreground: 199 47% 9%;
+  
+  /* Secondary - Dark blue-gray */
+  --secondary: 195 43% 22%; /* #205c79 */
+  --secondary-foreground: 195 83% 88%;
+  
+  /* Muted */
+  --muted: 195 43% 22%;
+  --muted-foreground: 195 26% 62%;
+  
+  /* Accent */
+  --accent: 195 43% 28%;
+  --accent-foreground: 195 83% 88%;
+  
+  /* Borders */
+  --border: 195 43% 22%;
+  --input: 195 43% 22%;
+  --ring: 195 100% 55%;
+  
+  /* Success - Dark teal */
+  --success: 180 60% 40%;
+  --success-foreground: 195 83% 88%;
+  
+  /* Warning - Dark amber */
+  --warning: 45 85% 50%;
+  --warning-foreground: 199 47% 9%;
+  
+  /* Destructive - Dark coral */
+  --destructive: 10 70% 50%;
+  --destructive-foreground: 195 83% 88%;
+}
