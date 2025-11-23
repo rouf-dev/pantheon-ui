@@ -1,6 +1,9 @@
 // Styles
 import './styles/globals.css'
 
+// Design Tokens (Adamas)
+export * from './tokens'
+
 // UI Components (Shadcn)
 export * from './components/ui/button'
 export * from './components/ui/card'

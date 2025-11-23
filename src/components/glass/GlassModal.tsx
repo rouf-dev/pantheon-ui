@@ -1,3 +1,5 @@
+"use client"
+
 import { DialogContent } from "../ui/dialog"
 import { cn } from "@/lib/utils"
 

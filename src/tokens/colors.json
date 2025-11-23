@@ -1,0 +1,74 @@
+{
+  "light": {
+    "background": "0 0% 100%",
+    "foreground": "199 34% 12%",
+    "card": "0 0% 100%",
+    "cardForeground": "199 34% 12%",
+    "popover": "0 0% 100%",
+    "popoverForeground": "199 34% 12%",
+    "primary": "195 100% 47%",
+    "primaryForeground": "0 0% 100%",
+    "secondary": "193 83% 88%",
+    "secondaryForeground": "195 46% 31%",
+    "muted": "210 40% 96%",
+    "mutedForeground": "195 18% 48%",
+    "accent": "193 100% 85%",
+    "accentForeground": "195 65% 27%",
+    "border": "210 31% 91%",
+    "input": "210 31% 91%",
+    "ring": "195 100% 47%",
+    "success": "180 70% 45%",
+    "successForeground": "0 0% 100%",
+    "warning": "45 95% 55%",
+    "warningForeground": "199 34% 12%",
+    "destructive": "10 80% 60%",
+    "destructiveForeground": "0 0% 100%"
+  },
+  "dark": {
+    "background": "199 47% 9%",
+    "foreground": "195 83% 88%",
+    "card": "199 43% 11%",
+    "cardForeground": "195 83% 88%",
+    "popover": "199 43% 11%",
+    "popoverForeground": "195 83% 88%",
+    "primary": "195 100% 55%",
+    "primaryForeground": "199 47% 9%",
+    "secondary": "195 43% 22%",
+    "secondaryForeground": "195 83% 88%",
+    "muted": "195 43% 22%",
+    "mutedForeground": "195 26% 62%",
+    "accent": "195 43% 28%",
+    "accentForeground": "195 83% 88%",
+    "border": "195 43% 22%",
+    "input": "195 43% 22%",
+    "ring": "195 100% 55%",
+    "success": "180 60% 40%",
+    "successForeground": "195 83% 88%",
+    "warning": "45 85% 50%",
+    "warningForeground": "199 47% 9%",
+    "destructive": "10 70% 50%",
+    "destructiveForeground": "195 83% 88%"
+  },
+  "semantic": {
+    "primary": {
+      "hex": "#00b3f2",
+      "hsl": "195 100% 47%",
+      "description": "Signature cyan-blue"
+    },
+    "success": {
+      "hex": "#24b8a8",
+      "hsl": "180 70% 45%",
+      "description": "Teal-blue for success states"
+    },
+    "warning": {
+      "hex": "#f5c542",
+      "hsl": "45 95% 55%",
+      "description": "Warm yellow"
+    },
+    "destructive": {
+      "hex": "#e66a5c",
+      "hsl": "10 80% 60%",
+      "description": "Soft coral"
+    }
+  }
+}

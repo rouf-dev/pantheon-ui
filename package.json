@@ -1,17 +1,17 @@
 {
   "name": "@rouf-dev/pantheon-ui",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Pantheon Design System - Universal UI Components & Design Tokens",
   "main": "./dist/pantheon-ui.cjs.js",
   "module": "./dist/pantheon-ui.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/pantheon-ui.es.js",
-      "require": "./dist/pantheon-ui.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/pantheon-ui.cjs.js"
     },
-    "./styles": "./dist/style.css"
+    "./styles": "./dist/pantheon-ui.css"
   },
   "files": [
     "dist",
