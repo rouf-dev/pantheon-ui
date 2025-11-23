@@ -1,5 +1,5 @@
 {
-  "name": "@pantheon/pantheon-ui",
+  "name": "@rouf-dev/pantheon-ui",
   "version": "1.0.0",
   "description": "Pantheon Design System - Universal UI Components & Design Tokens",
   "main": "./dist/pantheon-ui.cjs.js",
@@ -34,8 +34,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rouf-dev/private-md-concept.git",
-    "directory": "lab/hephaestus"
+    "url": "https://github.com/rouf-dev/pantheon-ui"
   },
   "publishConfig": {
     "access": "public"

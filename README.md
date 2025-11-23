@@ -1,26 +1,32 @@
-# @pantheon/pantheon-ui
+# @rouf-dev/pantheon-ui
 
 **Universal Design System for the Pantheon Architecture**
 
-A React component library built with Tailwind CSS and Shadcn/ui, providing the foundational UI elements for all applications within the Pantheon ecosystem.
+A modern React component library built with TypeScript, Tailwind CSS v4, and Radix UI primitives. Provides the foundational UI components and design tokens for all applications within the Pantheon ecosystem.
 
-## 🎯 Concept
+**Version:** 1.0.0  
+**Published:** November 23, 2025  
+**Repository:** [github.com/rouf-dev/pantheon-ui](https://github.com/rouf-dev/pantheon-ui)
 
-Pantheon UI is the **universal design system** that serves as the raw material for building all Pantheon applications. Just as the primordial elements existed before the gods themselves, Pantheon UI provides the fundamental components and design tokens that every god (application) can use to build consistent, accessible, and beautiful user interfaces.
+## 🎯 Philosophy
 
-### Structure
+Pantheon UI serves as **Pillar 2** of the Pantheon Architecture - the universal design system that provides raw materials for building consistent, accessible, and beautiful interfaces across all Pantheon applications.
 
-```
-@rouf-dev/pantheon-ui
-├── Adamas (Design Tokens)     ← Raw materials: colors, typography, spacing
-└── Tektōn (Components)        ← Finished elements: buttons, cards, forms
-```
-
-**Philosophy:**
+**Design Principles:**
 - **Universal:** Works across all Pantheons (Roman, Egyptian, Norse, etc.)
 - **Consistent:** Ensures visual coherence across the entire ecosystem
-- **Simple:** Clean, blue-based color palette that's never flashy
-- **Modern:** Glass effects, smooth animations, and contemporary patterns
+- **Simple, Not Flashy:** Clean blue palette, professional and modern
+- **Information-Dense:** Enterprise-grade components with glassmorphism
+
+## ✨ Features
+
+- 🎨 **Blue-based color palette** - Professional, non-flashy design system
+- 🪟 **Glassmorphism effects** - Blue-tinted transparency with backdrop blur
+- 🎯 **TypeScript support** - Full type definitions included
+- ♿ **Accessible components** - Built on Radix UI primitives
+- 📦 **Tree-shakeable** - ESM + CommonJS builds
+- 🌗 **Dark mode ready** - Deep blue theme for dark environments
+- ⚡ **Tailwind CSS v4** - Modern utility-first styling
 
 ## 📦 Installation
 
@@ -28,41 +34,40 @@ Pantheon UI is the **universal design system** that serves as the raw material f
 npm install @rouf-dev/pantheon-ui
 ```
 
-## 🚀 Setup
+## 🚀 Quick Start
 
-### 1. Install peer dependencies
+### 1. Install
 
+```bash
+npm install @rouf-dev/pantheon-ui
+# or
+pnpm add @rouf-dev/pantheon-ui
+```
+
+**Peer Dependencies:**
 ```bash
 npm install react react-dom tailwindcss
 ```
 
-### 2. Configure Tailwind
-
-Add Pantheon UI to your `tailwind.config.js`:
+### 2. Configure Tailwind CSS
 
 ```javascript
+// tailwind.config.js
 module.exports = {
   content: [
     './src/**/*.{ts,tsx}',
-    './node_modules/@pantheon/pantheon-ui/dist/**/*.js'
+    './node_modules/@rouf-dev/pantheon-ui/dist/**/*.js'
   ],
-  theme: {
-    extend: {
-      colors: {
-        // Pantheon UI provides these automatically via CSS variables
-        primary: 'hsl(var(--primary))',
-        secondary: 'hsl(var(--secondary))',
-        // ... and more
-      }
-    }
-  }
+  // Pantheon UI uses CSS variables for colors
+  // No additional theme config needed
 }
 ```
 
-### 3. Import styles
+### 3. Import Styles
 
 ```tsx
-import '@pantheon/pantheon-ui/styles'
+// In your app entry point (e.g., main.tsx or App.tsx)
+import '@rouf-dev/pantheon-ui/styles'
 ```
 
 ## 💡 Usage
@@ -70,7 +75,7 @@ import '@pantheon/pantheon-ui/styles'
 ### Basic Components
 
 ```tsx
-import { Button, Card, CardHeader, CardTitle, CardContent, Input } from '@pantheon/pantheon-ui'
+import { Button, Card, CardHeader, CardTitle, CardContent, Input } from '@rouf-dev/pantheon-ui'
 
 function JupiterApp() {
   return (
@@ -90,7 +95,7 @@ function JupiterApp() {
 ### Typography System
 
 ```tsx
-import { Typography } from '@pantheon/pantheon-ui'
+import { Typography } from '@rouf-dev/pantheon-ui'
 
 function Page() {
   return (
@@ -109,7 +114,7 @@ function Page() {
 ### Navigation
 
 ```tsx
-import { Navigation } from '@pantheon/pantheon-ui'
+import { Navigation } from '@rouf-dev/pantheon-ui'
 
 function App() {
   const navItems = [
@@ -132,7 +137,7 @@ function App() {
 ### Glass Components
 
 ```tsx
-import { GlassCard } from '@pantheon/pantheon-ui'
+import { GlassCard } from '@rouf-dev/pantheon-ui'
 
 function Dashboard() {
   return (
@@ -149,7 +154,7 @@ function Dashboard() {
 ### Color Palette Display
 
 ```tsx
-import { ColorPalette } from '@pantheon/pantheon-ui'
+import { ColorPalette } from '@rouf-dev/pantheon-ui'
 
 function StyleGuide() {
   const colors = [
@@ -162,25 +167,25 @@ function StyleGuide() {
 }
 ```
 
-## 🎨 Available Components
+## 📦 Component Catalog
 
-### Core UI Components (Tektōn)
-- **`Button`** - Primary, secondary, success, warning, destructive, ghost, link variants
-- **`Card`** - Container with header, content, footer subcomponents
-- **`Input`** - Text input with validation states
-- **`Dialog`** - Modal dialog component
-- **`Select`** - Dropdown select with Radix UI
-- **`Table`** - Data table with header, body, row, cell components
-- **`Typography`** - H1-H4, paragraph, lead, muted, code variants
-- **`Navigation`** - Navbar with logo, items, and actions
-- **`ColorPalette`** - Design system color showcase
+### UI Components
+- **`Button`** - 8 variants (default, secondary, outline, ghost, link, destructive, success, warning) + 5 sizes
+- **`Card`** - Container with `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`
+- **`Input`** - Form input with label integration
+- **`Dialog`** - Modal with `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`
+- **`Select`** - Accessible dropdown with `SelectTrigger`, `SelectContent`, `SelectItem` (Radix UI)
+- **`Table`** - Data table with `TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell`
+- **`Typography`** - 9 semantic variants (h1-h4, p, lead, large, small, muted, code)
+- **`Navigation`** - Navbar with logo slot, menu items, and action slots (default/glass variants)
+- **`ColorPalette`** - Design token display with swatches
 
 ### Glass Components
-- **`GlassCard`** - Card with glassmorphism effect (light, medium, heavy intensities)
-- **`GlassModal`** - Modal with blue-tinted glass backdrop
+- **`GlassCard`** - Glassmorphism card (light/medium/heavy intensity)
+- **`GlassModal`** - Dialog with blue-tinted glass backdrop
 
 ### Utilities
-- **`cn`** - Class name merger (uses clsx + tailwind-merge)
+- **`cn`** - Class name utility (clsx + tailwind-merge)
 
 ## 📖 Component Props
 
@@ -246,92 +251,55 @@ function StyleGuide() {
 />
 ```
 
-## 🎨 Design Tokens (Adamas)
+## 🎨 Design System
 
-### Color System
+### Color Palette
 
-Pantheon UI uses a **blue-based color palette** designed for professional, non-flashy applications:
+**Primary Color:** `hsl(195, 100%, 47%)` - Cyan-blue (#00b3f2)
 
-- **Primary**: `hsl(195, 100%, 47%)` - Signature cyan-blue (#00b3f2)
-- **Secondary**: `hsl(193, 83%, 88%)` - Light blue for subtle actions
-- **Success**: `hsl(180, 70%, 45%)` - Teal-blue for success states
-- **Warning**: `hsl(45, 95%, 55%)` - Warm yellow (not aggressive)
-- **Destructive**: `hsl(10, 80%, 60%)` - Soft coral (lighter red)
+**Semantic Colors:**
+- **Success:** `hsl(180, 70%, 45%)` - Teal-blue
+- **Warning:** `hsl(45, 95%, 55%)` - Warm yellow
+- **Destructive:** `hsl(10, 80%, 60%)` - Soft coral
 
-All colors are accessible via CSS variables:
+**Neutrals:**
+- Background: White / Deep blue (dark mode)
+- Foreground: Dark blue-gray / Off-white (dark mode)
+- Muted: Light blue-gray backgrounds
+
+All colors use CSS custom properties:
 ```css
 var(--primary)
-var(--secondary)
 var(--success)
 var(--warning)
 var(--destructive)
+var(--background)
+var(--foreground)
+var(--muted)
 ```
 
-### Blue Scale (50-900)
+### Glassmorphism
 
-The primary color has a full scale for fine-grained control:
-- `primary-50` to `primary-100`: Light blues for backgrounds
-- `primary-400`: Main brand color
-- `primary-600` to `primary-900`: Dark blues for depth
-
-### Glass Effects
-
-Blue-tinted glass colors for modern transparency:
-```
-bg-glass-light   - Subtle blue transparency
-bg-glass-medium  - Balanced blue glass
-bg-glass-heavy   - Rich blue frost
-bg-glass-dark    - Deep blue overlay
-```
+Blue-tinted transparency with backdrop blur:
+- **Light:** `rgba(240, 248, 255, 0.4)` + 12px blur
+- **Medium:** `rgba(240, 248, 255, 0.6)` + 16px blur  
+- **Heavy:** `rgba(240, 248, 255, 0.8)` + 24px blur
 
 ## 🌗 Dark Mode
 
-Pantheon UI includes dark mode support with deep blue tones:
+Toggle dark mode by adding the `dark` class to your root element:
 
 ```tsx
-// Automatically switches based on system preference
-// Or manually toggle with a class on <html>:
 <html className="dark">
+  {/* Your app */}
+</html>
 ```
 
-Dark mode uses:
-- Background: Deep blue (#092b3a)
-- Foreground: Light blue-gray
-- All semantic colors adjusted for proper contrast
+Dark mode colors automatically use deep blue tones for backgrounds and adjusted contrast for all semantic colors.
 
-## ⚡ Performance
+## ⚡ Technical Details
 
-- **Tree-shakeable**: Only import what you use
-- **Optimized glass effects**: Native CSS `backdrop-filter` with 12-24px blur
-- **Zero runtime CSS-in-JS**: Pure Tailwind CSS compilation
-- **TypeScript**: Full type safety with `.d.ts` exports
-
-## 🔧 TypeScript Support
-
-Pantheon UI is written in TypeScript and exports full type definitions:
-
-```tsx
-import type { ButtonProps, TypographyProps } from '@pantheon/pantheon-ui'
-
-const CustomButton: React.FC<ButtonProps> = (props) => {
-  return <Button {...props} />
-}
-```
-
-## 🏛️ Design Philosophy
-
-Pantheon UI embodies these principles:
-
-1. **Simple, Not Flashy**: Clean blue palette, no overwhelming colors
-2. **Cool & Animatable**: Smooth transitions, glass effects, modern aesthetics
-3. **Universal Foundation**: Works for HR (Jupiter), Finance (Osiris), Infrastructure (Yggdrasil)
-4. **Professional**: Enterprise-grade accessibility and design patterns
-5. **Consistent**: Same components across all Pantheons
-
-## 📦 What's Included
-
-When you install `@pantheon/pantheon-ui`, you get:
-
+**Build Output:**
 ```
 dist/
 ├── pantheon-ui.es.js       # ESM bundle
@@ -340,20 +308,52 @@ dist/
 └── style.css               # Global styles & CSS variables
 ```
 
-## 🔗 Part of Pantheon Architecture
+**Features:**
+- Tree-shakeable ESM/CommonJS exports
+- Native CSS `backdrop-filter` for glass effects
+- Zero runtime CSS-in-JS
+- Full TypeScript type definitions
+- Radix UI accessibility primitives
+
+## 🔧 TypeScript
+
+All components include full type definitions:
+
+```tsx
+import type { ButtonProps, TypographyProps } from '@rouf-dev/pantheon-ui'
+
+const CustomButton: React.FC<ButtonProps> = (props) => {
+  return <Button {...props} />
+}
+```
+
+## 🚀 Tech Stack
+
+- **React:** 18+ (dev: 19.2.0)
+- **TypeScript:** 5.9+
+- **Tailwind CSS:** v4.1.17
+- **Build Tool:** Vite 7.2.4
+- **UI Primitives:** Radix UI (@radix-ui/react-*)
+- **Utilities:** class-variance-authority, clsx, tailwind-merge, lucide-react
+
+## 🏛️ Pantheon Architecture
 
 Pantheon UI is **Pillar 2** of the Pantheon Architecture:
 
 1. **Akashic** - Concept & Idea Management
-2. **Pantheon UI** - Design System (you are here)
-3. **The Vault** - Code Repositories
+2. **Pantheon UI** - Universal Design System (you are here)
+3. **The Vault** - Code Repositories & Implementation
 
-Learn more: [Pantheon Architecture Documentation](https://github.com/rouf-dev/private-md-concept)
+This design system provides the foundational components and visual language used across all Pantheon applications, ensuring consistency and coherence throughout the ecosystem.
 
 ## 📄 License
 
 MIT
 
 ---
+
+**Package:** [@rouf-dev/pantheon-ui](https://www.npmjs.com/package/@rouf-dev/pantheon-ui)  
+**Repository:** [github.com/rouf-dev/pantheon-ui](https://github.com/rouf-dev/pantheon-ui)  
+**Version:** 1.0.0  
 
 Built with ❤️ for the Pantheon ecosystem
