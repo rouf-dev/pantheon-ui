@@ -34,6 +34,14 @@ components.json
 README.md
 docs/
 
+# Storybook
+.storybook/
+storybook-static/
+**/*.stories.ts
+**/*.stories.tsx
+**/*.story.ts
+**/*.story.tsx
+
 # Tests
 __tests__/
 **/*.test.ts
@@ -45,6 +53,10 @@ coverage/
 # Examples and demos
 examples/
 demo/
+
+# Development files
+IMPROVEMENT.md
+CHANGELOG.md
 
 # Build tools
 node_modules/

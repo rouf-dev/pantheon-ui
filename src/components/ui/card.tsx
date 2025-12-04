@@ -5,7 +5,10 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { motion, type HTMLMotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
-import { hoverLift, tapPress, springs } from "@/lib/motion"
+import { 
+  type CardAnimation, 
+  getCardMotionProps,
+} from "@/lib/motion"
 
 const cardVariants = cva(
   // Base styles
@@ -53,22 +56,43 @@ const cardVariants = cva(
 export interface CardProps
   extends Omit<HTMLMotionProps<"div">, "ref">,
     VariantProps<typeof cardVariants> {
-  /** Enable hover lift animation */
+  /** 
+   * Animation preset for hover/tap effects
+   * @default 'lift' for interactive/elevated/glass variants, 'none' for others
+   * - 'lift': Subtle lift on hover with shadow
+   * - 'scale': Scale up slightly on hover  
+   * - 'glow': Glow effect on hover
+   * - 'none': No animation
+   * - false: Explicitly disable all motion
+   */
+  animation?: CardAnimation | false
+  
+  /** @deprecated Use `animation` prop instead. Will be removed in v2.0 */
   animated?: boolean
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, glassIntensity, animated = false, ...props }, ref) => {
-    // Determine if hover effects should be applied
-    const shouldAnimate = animated || variant === "interactive" || variant === "elevated" || variant === "glass"
+  ({ className, variant, glassIntensity, animation, animated, ...props }, ref) => {
+    // Determine default animation based on variant
+    // interactive, elevated, and glass variants get 'lift' by default
+    const shouldAnimateByDefault = variant === "interactive" || variant === "elevated" || variant === "glass"
+    
+    // Handle deprecated 'animated' prop
+    const resolvedAnimation: CardAnimation | false = 
+      animation !== undefined 
+        ? animation 
+        : animated !== undefined
+          ? (animated ? 'lift' : 'none')
+          : (shouldAnimateByDefault ? 'lift' : 'none')
+    
+    // Get motion props
+    const motionProps = getCardMotionProps(resolvedAnimation)
     
     return (
       <motion.div
         ref={ref}
         className={cn(cardVariants({ variant, glassIntensity, className }))}
-        whileHover={shouldAnimate ? hoverLift : undefined}
-        whileTap={variant === "interactive" ? tapPress : undefined}
-        transition={springs.snappy}
+        {...motionProps}
         {...props}
       />
     )

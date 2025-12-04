@@ -2,8 +2,16 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import {
+  type FormAnimation,
+  subtleShake,
+  flashAttention,
+  springs,
+  tweens,
+} from "@/lib/motion"
 
 /**
  * Clear button for clearable inputs
@@ -104,6 +112,15 @@ export interface InputProps
   containerClassName?: string
   /** Make the input take full width */
   fullWidth?: boolean
+  /**
+   * Animation to play when error state is triggered
+   * @default 'shake' - Subtle horizontal shake
+   * - 'shake': Quick horizontal vibration (±3px)
+   * - 'flash': Brief background highlight
+   * - 'none': No animation
+   * - false: Explicitly disable error animation
+   */
+  errorAnimation?: FormAnimation | false
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -129,6 +146,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       defaultValue,
       onChange,
       disabled,
+      errorAnimation = "shake",
       ...props
     },
     ref
@@ -143,6 +161,21 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     )
     const isControlled = value !== undefined
     const currentValue = isControlled ? value : internalValue
+    
+    // Track if error just appeared (for animation trigger)
+    const [shouldAnimateError, setShouldAnimateError] = React.useState(false)
+    const prevErrorRef = React.useRef<string | boolean | undefined>(error)
+    
+    React.useEffect(() => {
+      // Trigger animation only when error appears (not on mount with existing error)
+      if (error && !prevErrorRef.current) {
+        setShouldAnimateError(true)
+        // Reset after animation duration
+        const timer = setTimeout(() => setShouldAnimateError(false), 500)
+        return () => clearTimeout(timer)
+      }
+      prevErrorRef.current = error
+    }, [error])
 
     // Determine state from error/success props
     const derivedState = error
@@ -182,6 +215,32 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputPaddingLeft = leftIcon ? "pl-10" : undefined
     const inputPaddingRight =
       rightIcon || showClearButton ? "pr-10" : undefined
+    
+    // Determine animation variants and props for error state
+    const getErrorAnimationProps = () => {
+      if (errorAnimation === false || errorAnimation === 'none' || !shouldAnimateError) {
+        return {}
+      }
+      
+      switch (errorAnimation) {
+        case 'shake':
+          return {
+            animate: 'shake',
+            variants: subtleShake,
+            transition: springs.snappy,
+          }
+        case 'flash':
+          return {
+            animate: 'flash',
+            variants: flashAttention,
+            transition: tweens.fast,
+          }
+        default:
+          return {}
+      }
+    }
+    
+    const errorMotionProps = getErrorAnimationProps()
 
     return (
       <div
@@ -205,8 +264,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        {/* Input wrapper */}
-        <div className="relative">
+        {/* Input wrapper - with motion for error animation */}
+        <motion.div 
+          className="relative"
+          {...errorMotionProps}
+        >
           {/* Left icon */}
           {leftIcon && (
             <span
@@ -253,7 +315,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               </span>
             )
           )}
-        </div>
+        </motion.div>
 
         {/* Helper text / Error / Success message */}
         {(helperText || error || success) && (

@@ -3,8 +3,13 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion, type HTMLMotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import { 
+  type ButtonAnimation, 
+  getButtonMotionProps,
+} from "@/lib/motion"
 
 /**
  * Spinner component for loading state
@@ -80,7 +85,7 @@ const buttonVariants = cva(
 )
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<HTMLMotionProps<"button">, "ref" | "children">,
     VariantProps<typeof buttonVariants> {
   /** Render as child element using Radix Slot */
   asChild?: boolean
@@ -92,6 +97,18 @@ export interface ButtonProps
   leftIcon?: React.ReactNode
   /** Icon element to render after children */
   rightIcon?: React.ReactNode
+  /** 
+   * Animation preset for tap/hover feedback
+   * @default 'press' - Subtle scale down on press
+   * - 'press': Subtle press effect (scale 0.97)
+   * - 'bounce': Bouncy hover + tap effect
+   * - 'squash': Playful squash & stretch
+   * - 'none': No animation
+   * - false: Explicitly disable all motion
+   */
+  animation?: ButtonAnimation | false
+  /** Button content */
+  children?: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -108,15 +125,35 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       disabled,
       children,
+      animation = "press",
       ...props
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : "button"
     const isDisabled = disabled || loading
+    
+    // Get motion props based on animation preset
+    // Disable motion when loading or disabled
+    const motionProps = isDisabled ? {} : getButtonMotionProps(animation)
+
+    // For asChild, we can't use motion.button - fall back to regular Slot
+    if (asChild) {
+      return (
+        <Slot
+          className={cn(
+            buttonVariants({ variant, size, fullWidth, className }),
+            loading && "cursor-not-allowed"
+          )}
+          ref={ref}
+          {...(props as React.HTMLAttributes<HTMLElement>)}
+        >
+          {children}
+        </Slot>
+      )
+    }
 
     return (
-      <Comp
+      <motion.button
         className={cn(
           buttonVariants({ variant, size, fullWidth, className }),
           loading && "cursor-not-allowed"
@@ -125,6 +162,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-busy={loading}
+        {...motionProps}
         {...props}
       >
         {loading ? (
@@ -139,7 +177,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {rightIcon}
           </>
         )}
-      </Comp>
+      </motion.button>
     )
   }
 )
