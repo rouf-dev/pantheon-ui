@@ -1,6 +1,6 @@
 {
   "name": "@rouf-dev/pantheon-ui",
-  "version": "0.0.1",
+  "version": "0.0.1-beta",
   "type": "module",
   "description": "Pantheon Design System - Universal UI Components & Design Tokens",
   "main": "./dist/pantheon-ui.cjs.js",
@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
@@ -104,6 +104,7 @@
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.15"
   }
 }
